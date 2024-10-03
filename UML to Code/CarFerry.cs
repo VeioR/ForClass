@@ -10,8 +10,7 @@ namespace UML_to_code
     {
         private string name;
         private double maxWeight;
-        private List<string> vehiclesOnboard = new List<string>();
-        private List<double> weightOnboard = new List<double>();
+        private List<Vehicle> vehicles = new List<Vehicle>();
         private double totalWeight;
 
         public CarFerry(string name, double maxWeight)
@@ -21,28 +20,26 @@ namespace UML_to_code
         }
         public void addVehicle(Vehicle vehicle)
         {
-            vehiclesOnboard.Add(vehicle.getLicensePlate());
-            weightOnboard.Add(vehicle.getWeight());
+            vehicles.Add(vehicle);
         }
 
         public void removeVehicle(Vehicle vehicle)
         {
-            vehiclesOnboard.Remove(vehicle.getLicensePlate());
-            weightOnboard.Remove(vehicle.getWeight());
+            vehicles.Remove(vehicle);
         }
         public string getVehicleList(int x)
         {
-            return vehiclesOnboard[x];
+            return vehicles[x].getLicensePlate();
         }
 
         public double getWeightList(int x)
         {
-            return weightOnboard[x];
+            return vehicles[x].getWeight();
         }
 
         public int amountOfVehiclesOnBoard()
         {
-            return vehiclesOnboard.Count;
+            return vehicles.Count;
         }
 
         public string getName()
@@ -57,9 +54,9 @@ namespace UML_to_code
 
         public double getTotalWeight()
         {
-            foreach (double i in weightOnboard)
+            foreach (Vehicle i in vehicles)
             {
-                totalWeight += i;
+                totalWeight += i.getWeight();
             }
             return totalWeight;
         }
@@ -79,4 +76,3 @@ namespace UML_to_code
 
     }
 }
-S
